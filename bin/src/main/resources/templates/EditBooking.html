@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../assets/lib/jquery.min.js"></script>
+<link href="/src/output.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="/assets/lib/icomoon/style.css">
+<link rel="stylesheet" href="../css/swiper-bundle.min.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<header class="site-header bg-white">
+		<div class="bg-black py-2">
+			<div
+				class="top-header flex flex-wrap justify-between items-center container">
+				<div class="text-sm font-normal text-white text-center">
+					<span>Find and book reliable transportation options quickly
+						and easily.</span>
+				</div>
+				<div
+					class="flex items-center [&_input]:transition [&_input]:duration-100">
+					<div class="flex items-center gap-4">
+						<div>
+							<a href="/login"><button>Login</button></a>
+						</div>
+						<div class="flex items-center">
+
+							<form action="/search" method="post">
+								<input
+									class="input text-xs px-3 py-2 w-40 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-primary border-[2px] border-solid border-primary"
+									name="search" placeholder="Search Here">
+								<button
+									class="transition duration-300 px-4 py-2 bg-primary text-white text-xs font-semibold rounded-r-md border-2 border-primary hover:bg-transparent focus:bg-transparent border-l-0">Search</button>
+							</form>
+						</div>
+						<div
+							class="relative before:absolute before:-right-[6px] before:-top-2 before:bg-primary before:text-white before:size-4 before:rounded-full before:content-['1'] before:flex before:justify-center before:text-[10px]">
+							<a th:href="@{/bookingList}" class="stretched-link"><img
+								src="../assets/images/edit-icon.png" width="20" height="20"
+								alt="Edit Icon" loading="lazy"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mx-auto header-bottom">
+			<div class="flex items-center justify-between">
+				<picture class="relative"> <img
+					src="/assets/images/header-logo.png" alt="Header Logo" width="250"
+					height="95" loading="lazy"> <a href="homepage.html"
+					class="stretched-link js-has-smooth"></a> </picture>
+				<div class="nav-holder">
+					<nav class="nav">
+						<ul class="nav-list">
+							<li><a href="/home"
+								class="text-black hover:text-black/55">Home</a></li>
+							<li><a href="/home"
+								class="text-black hover:text-black/55">Services</a></li>
+							<li><a href="/home"
+								class="text-black hover:text-black/55">About Us</a></li>
+							<li><a href="/home"
+								class="text-black hover:text-black/55">Contact Us</a></li>
+							<li><a href="tel:1234567890"
+								class="group flex items-center text-black hover:text-primary duration-300">
+									<div
+										class="size-9 lg:size-11 flex items-center justify-center rounded-full border lg:border-primary/10 border-white relative duration-300">
+										<div
+											class="size-7 lg:size-9 flex items-center justify-center bg-white lg:bg-primary/15 group-hover:bg-primary duration-300 rounded-full">
+											<i class="icon-phone group-hover:text-white duration-300"></i>
+										</div>
+									</div> <span class="pl-2 block lg:hidden xl:block">(123)
+										456-7890</span>
+							</a></li>
+							<li><a href="mailto:adminemail@gmail.com"
+								class="group flex items-center text-black hover:text-primary duration-300">
+									<div
+										class="size-9 lg:size-11 flex items-center justify-center rounded-full border lg:border-primary/10 border-white relative duration-300">
+										<div
+											class="size-7 lg:size-9 flex items-center justify-center bg-white lg:bg-primary/15 group-hover:bg-primary duration-300 rounded-full">
+											<i class="icon-mail group-hover:text-white"></i>
+										</div>
+									</div> <span class="flex-1 pl-2 lg:hidden">adminemail@gmail.com</span>
+							</a></li>
+							<li><a href="#bookingServices"
+								class="btn btn-outline js-has-smooth">Book Now</a></li>
+						</ul>
+					</nav>
+				</div>
+				<a href="#" class="opener"> <span></span>
+				</a>
+			</div>
+		</div>
+	</header>
+	<main>
+		<!-- Dashboard Container -->
+		<div class="flex h-auto">
+			<!-- Sidebar -->
+
+
+			<div class="flex-1 flex flex-col">
+				<!-- Header -->
+
+				<div class="bg-white p-8 rounded-lg">
+					<h3 class="text-2xl font-semibold text-gray-800 mb-6">Edit
+						Booking</h3>
+					<form class="space-y-6 booking-form" method="post"
+						action="/editBooking" th:object="${vModel}">
+						<h2 class="font-bold mb-6 text-primary text-center">Book Your
+							Vehicle</h2>
+						<div class="form-wrapper">
+							<!-- Name -->
+							<div class="form-control">
+								<label for="firstName" class="block text-gray-700 font-semibold">First
+									Name</label> <input type="text" id="firstName" th:field="*{firstName}"
+									placeholder="First Name" required>
+							</div>
+
+							<!-- Last Name -->
+							<div class="form-control">
+								<label for="lastName" class="block text-gray-700 font-semibold">Last
+									Name</label> <input type="text" id="lastName" th:field="*{lastName}"
+									placeholder="Last Name" required>
+							</div>
+
+							<!-- Email -->
+							<div class="form-control">
+								<label for="email" class="block text-gray-700 font-semibold">Email
+									Address</label> <input type="email" id="email" th:field="*{email}"
+									placeholder="email@example.com" required>
+							</div>
+
+							<!-- Phone -->
+							<div class="form-control">
+								<label for="phone" class="block text-gray-700 font-semibold">Phone
+									Number</label> <input type="number" id="phone" th:field="*{phone}"
+									placeholder="123-456-7890" required>
+							</div>
+
+							<!-- Date -->
+							<div class="form-control">
+								<label for="travel-date"
+									class="block text-gray-700 font-semibold">Date of
+									Travel</label> <input type="date" id="travel-date"
+									th:field="*{travelDate}" required>
+							</div>
+
+							<!-- Time Travel-->
+							<div class="form-control">
+								<label for="time" class="block text-gray-700 font-semibold">Time
+									of Travel</label> <input type="time" id="time" th:field="*{time}"
+									required>
+							</div>
+
+							<!-- Pickup Location -->
+							<div class="form-control">
+								<label for="pickup" class="block text-gray-700 font-semibold">Pickup
+									Location</label> <input type="text" id="pickup" th:field="*{pickup}"
+									placeholder="Enter pickup location" required>
+							</div>
+
+							<!-- Date Dropped-->
+							<div class="form-control">
+								<label for="droped-date"
+									class="block text-gray-700 font-semibold">Date of
+									Droped</label> <input type="date" id="droped-date"
+									th:field="*{dropDate}" required>
+							</div>
+
+
+							<!-- Dropoff Location -->
+							<div class="form-control">
+								<label for="dropoff" class="block text-gray-700 font-semibold">Dropoff
+									Location</label> <input type="text" id="dropoff" th:field="*{dropoff}"
+									placeholder="Enter dropoff location" required>
+							</div>
+
+							<!-- Price -->
+							<div class="form-control">
+								<label for="price" class="block text-gray-700 font-semibold">Price</label>
+								<input type="text" id="price" th:field="*{price}"
+									placeholder="NPR" readonly>
+							</div>
+
+							<!-- Special Requests -->
+							<div class="form-control !w-full">
+								<label for="requests" class="block text-gray-700 font-semibold">Special
+									Requests</label>
+								<textarea id="requests" th:field="*{requests}" rows="4"
+									placeholder="Any special requests?"></textarea>
+							</div>
+							<div class="form-control admin-control">
+	
+							
+							<label for="vehicle" class="block text-gray-700 font-semibold">Vehicle
+									</label>
+									 <select th:field="*{vehicle}" id="vehicle" class="form-control" >
+										<option th:each="v:${vList}" th:value="${v.id}" >[[${v.name}]]</option>
+									</select>
+								
+							</div>
+							<br>
+
+
+							<div>
+								<input type="hidden" th:field="*{id}">
+							</div>
+							
+							
+							<div class="flex justify-center items-center">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- Footer -->
+	<footer class="bg-black text-white py-12">
+		<div class="container mx-auto px-4">
+			<div class="flex flex-wrap justify-between">
+				<!-- Footer Navigation -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+					<ul>
+						<li><a href="index.html" class="hover:text-gray-400">Home</a></li>
+						<li><a href="about.html" class="hover:text-gray-400">About
+								Us</a></li>
+						<li><a href="services.html" class="hover:text-gray-400">Services</a></li>
+						<li><a href="contact.html" class="hover:text-gray-400">Contact</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Information -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+					<p class="mb-2">Bhansi-18, Kanchanpur, Nepal</p>
+					<p class="mb-2">
+						Email: <a href="mailto:adminemail@gmail.com"
+							class="hover:text-gray-400">adminemail@gmail.com</a>
+					</p>
+					<p class="mb-2">
+						Phone: <a href="tel:+1234567890" class="hover:text-gray-400">(123)
+							456-7890</a>
+					</p>
+				</div>
+
+				<!-- Social Media -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+					<div class="flex space-x-4">
+						<a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M23 3a10.96 10.96 0 01-3.14.86A5.472 5.472 0 0022.4 1.6a10.9 10.9 0 01-3.42 1.3A5.425 5.425 0 0016.9 0a5.48 5.48 0 00-5.5 5.5c0 .43.05.85.14 1.26A15.488 15.488 0 011.67 1.1a5.54 5.54 0 00-.74 2.77 5.42 5.42 0 002.43 4.56A5.416 5.416 0 01.5 8v.06a5.52 5.52 0 004.42 5.38A5.48 5.48 0 014 13a5.43 5.43 0 01-2.5-.7v.07a5.53 5.53 0 005.16 5.45A10.86 10.86 0 010 19.3a15.5 15.5 0 008.41 2.45c10.09 0 15.6-8.34 15.6-15.6 0-.24-.01-.48-.02-.72A11.04 11.04 0 0023 3z" />
+              </svg>
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M12 2.04c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm1.26 14.24l-4.77-3.08 1.33-2.13 3.44 2.21 6.11-9.9 1.43.8-5.73 9.33zm4.73-10.94l-2.95 4.71-2.7-1.71 2.67-4.28 2.98 1.73zm-2.38 2.72l-2.74 4.36-2.47-1.53 2.71-4.39 2.5 1.56zm2.35-3.54l-.96.57-2.9-1.7.93-1.55 2.93 1.73z" />
+              </svg>
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M12 2.163c1.204 0 1.333.005 1.8.026a3.638 3.638 0 012.688 1.156 3.637 3.637 0 011.157 2.687c.021.469.026.598.026 1.8s-.005 1.331-.026 1.8a3.638 3.638 0 01-1.157 2.688 3.637 3.637 0 01-2.688 1.157c-.469.021-.598.026-1.8.026-1.204 0-1.333-.005-1.8-.026a3.637 3.637 0 01-2.688-1.157 3.638 3.638 0 01-1.156-2.688c-.021-.469-.026-.598-.026-1.8s.005-1.331.026-1.8a3.637 3.637 0 011.156-2.687 3.638 3.638 0 012.688-1.156c.467-.021.596-.026 1.8-.026zM12 0c-1.445 0-1.626.006-2.194.031a5.49 5.49 0 00-3.952 1.527 5.49 5.49 0 00-1.527 3.951C4.006 6.374 4 6.555 4 8s.006 1.626.031 2.194a5.49 5.49 0 001.527 3.952 5.49 5.49 0 003.951 1.527c.568.025.749.031 2.194.031s1.626-.006 2.194-.031a5.49 5.49 0 003.951-1.527 5.49 5.49 0 001.527-3.952C20.994 9.626 21 9.445 21 8s-.006-1.626-.031-2.194a5.49 5.49 0 00-1.527-3.951 5.49 5.49 0 00-3.951-1.527C13.626.006 13.445 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.033a3.87 3.87 0 110-7.741 3.87 3.87 0 010 7.741zm3.835-9.211a1.08 1.08 0 11-2.159 0 1.08 1.08 0 012.159 0z" />
+              </svg>
+
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M23.498 6.186a2.805 2.805 0 00-1.977-1.978C19.299 4 12 4 12 4S4.701 4 2.479 4.208A2.805 2.805 0 00.502 6.186C0 8.01 0 12 0 12s0 3.99.502 5.814a2.805 2.805 0 001.977 1.978C4.701 20 12 20 12 20s7.299 0 9.521-.208a2.805 2.805 0 001.977-1.978C24 15.99 24 12 24 12s0-3.99-.502-5.814zM9.845 15.698V8.303l6.573 3.697-6.573 3.698z" />
+              </svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Newsletter Signup -->
+				<div class="w-full md:w-1/4">
+					<h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+					<p class="mb-4">Subscribe to our newsletter to receive the
+						latest updates and offers.</p>
+					<form action="#" method="POST">
+						<input type="email" placeholder="Your email"
+							class="w-full px-4 py-2 mb-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-600">
+						<button type="submit"
+							class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition duration-300">Subscribe</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="text-center mt-12">
+				<p class="text-gray-600">&copy; 2024 Your Company. All rights
+					reserved.</p>
+			</div>
+		</div>
+
+		<script src="../assets/js/form.js"></script>
+		<script src="../assets/js/navbar.js"></script>
+		<script src="../assets/js/swiper-bundle.min.js"></script>
+		<script src="../assets/js/main.js"></script>
+	</footer>
+</body>
+</html>

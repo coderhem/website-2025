@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+h1,
+.h1 {
+  @apply text-3xl lg:text-5xl xl:text-[84px] text-white;
+}
+
+h2,
+.h2 {
+  @apply text-3xl lg:text-4xl xl:text-[40px] leading-normal mb-5;
+}
+
+h3,
+.h3 {
+  @apply text-xl lg:text-2xl;
+}
+
+h4,
+.h4 {
+  @apply text-xl lg:text-lg;
+}
+
+h5,
+.h5 {
+  @apply text-lg lg:text-xl;
+}
+
+h6,
+.h6 {
+  @apply text-base;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  @apply max-lg:sticky;
+
+}
+
+
+.container {
+  @apply max-w-[1440px] mx-auto px-5;
+}
+
+.register-page input {
+  @apply mb-4;
+}
+
+a {
+  @apply text-primary transition duration-200 hover:text-primary/80 focus:text-primary/50;
+}
+
+.register-page label {
+  @apply mb-4;
+}
+
+.register-page select {
+  @apply cursor-pointer;
+}
+
+.register-page select option {
+  @apply cursor-pointer;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center cursor-pointer rounded-xl px-6 py-3 text-sm text-center !leading-none font-normal no-underline select-none border border-solid transition ease-in-out duration-500 focus:outline-none focus:ring focus:ring-offset-1 focus:ring-opacity-50 disabled:opacity-75 disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-primary text-white uppercase border-primary hover:bg-primary-100 hover:text-white hover:border-primary-100 focus:bg-primary-100 focus:text-white focus:border-primary-100 focus:ring-primary-100 active:bg-primary-100 active:border-primary-100;
+}
+
+.btn-outline {
+  @apply bg-transparent uppercase text-primary border-[2px] border-primary hover:bg-primary hover:text-white hover:border-primary focus:bg-primary-100 focus:text-white focus:border-primary-100 focus:ring-primary-100 active:bg-primary-100 active:border-primary-100 rounded-none transition ease-in-out duration-300;
+}
+
+.btn-block {
+  @apply block w-full;
+}
+
+.site-header {
+  @apply relative top-0 left-0 right-0 z-50;
+}
+
+.header-bottom {
+  @apply bg-white py-4;
+}
+
+.header-bottom .container {
+  @apply flex items-center justify-end relative;
+}
+
+.contact-btn {
+  @apply w-full lg:w-auto [&_.btn]:w-full lg:[&_.btn]:w-auto
+}
+
+.nav-list {
+  @apply lg:flex flex-wrap items-center [&_li]:mb-4 lg:[&_li]:mb-0 mb-8 lg:mb-0 text-lg w-full lg:w-auto md:gap-[14px] justify-end xl:justify-end [&_a]:text-white lg:[&_a]:text-black hover:[&_a]:text-primary lg:text-base flex-1;
+}
+
+.nav-list a {
+  @apply text-white lg:text-black transition duration-200 hover:text-primary focus:text-primary;
+}
+
+.nav-list .btn {
+  @apply btn-outline font-semibold;
+}
+
+.opener {
+  @apply block absolute top-1/2 right-[16px] -translate-y-1/2 w-[40px] h-[30px] before:left-2 before:right-2 before:top-2 before:h-[2px] before:bg-black before:absolute after:left-2 after:right-2 after:top-1/2 after:[.nav-active_&]:hidden after:-translate-y-1/2 after:h-[2px] after:bg-black after:absolute [&_span]:left-2 [&_span]:right-2 [&_span]:bottom-2 [&_span]:h-[2px] [&_span]:bg-black [&_span]:absolute lg:hidden after:transition-all before:transition-all [&_span]:transition-all
+}
+
+body.nav-active .opener {
+  @apply [&_span]:-rotate-45 [&_span]:-translate-y-1/2 [&_span]:top-1/2 before:rotate-45 before:-translate-y-1/2 before:top-1/2;
+}
+
+.stretched-link {
+  @apply before:absolute before:inset-0 before:cursor-pointer
+}
+
+.banner-slider figure {
+  @apply rounded-lg
+}
+
+.swiper {
+  @apply w-full h-full
+}
+
+.swiper-slide {
+  @apply text-center text-lg flex justify-center items-center !h-auto;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  @apply bg-primary transition-all duration-500 size-3;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply w-10 rounded-lg;
+}
+
+.swiper-pagination2 .swiper-pagination-bullet {
+  @apply bg-primary transition-all duration-500 size-3;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply w-10 rounded-lg;
+}
+
+.booking-form .form-wrapper {
+  @apply flex gap-y-7 flex-wrap -mx-5;
+}
+
+.booking-form .form-wrapper .form-control {
+  @apply mb-10 w-full lg:w-1/2 px-5;
+}
+
+.booking-form .form-wrapper .form-control label {
+  @apply mb-2;
+}
+
+.booking-form .form-wrapper .form-control input {
+  @apply border-[0.00000000000000000000000001px] border-primary-100/20 shadow-md outline-[0.00001px] outline-primary;
+}
+
+.booking-form .form-wrapper .form-control input {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary transition duration-300;
+}
+
+.booking-form .form-wrapper .form-control textarea {
+  @apply mb-4 w-full p-5 mt-2 border-2 border-black/10 border-solid;
+}
+
+.booking-form .form-wrapper .form-control textarea {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary transition duration-300;
+}
+
+.booking-form .form-wrapper .form-control select {
+  @apply border-[1px] border-primary/10 shadow-md outline-1 p-3 outline-primary w-full mt-1 rounded;
+}
+
+
+.booking-form .form-wrapper .admin-control {
+  @apply w-full;
+}
+
+.booking-form input {
+  @apply mt-1 p-3 w-full border-[0.0000001px] border-danger-100/20 rounded;
+}
+
+.booking-form {
+  @apply bg-white p-8 rounded shadow-md;
+}
+
+
+.nav-holder {
+  @apply flex-1 bg-black lg:bg-transparent fixed lg:static left-0 right-0 bottom-0 overflow-hidden overflow-y-auto [.nav-active_&]:h-full
+  /* px-4
+  lg:px-0 */
+  h-0 invisible lg:visible pointer-events-none lg:h-auto lg:pointer-events-auto [.nav-active_&]:visible [.nav-active_&]:pointer-events-auto transition-all duration-700 z-[-1] lg:z-0;
+}
+
+
+.nav {
+  @apply flex-1 pt-[200px] p-4 lg:p-0 sm:px-4 sm:max-w-[768px] lg:max-w-none mx-auto lg:mx-0 block lg:flex lg:items-center flex-wrap lg:justify-between;
+}
+
+.opener {
+  @apply block absolute top-1/2 right-[16px] -translate-y-1/2 w-[40px] h-[30px] before:left-2 before:right-2 before:top-2 before:h-[2px] before:bg-black before:absolute after:left-2 after:right-2 after:top-1/2 after:[.nav-active_&]:hidden after:-translate-y-1/2 after:h-[2px] after:bg-black after:absolute [&_span]:left-2 [&_span]:right-2 [&_span]:bottom-2 [&_span]:h-[2px] [&_span]:bg-black [&_span]:absolute lg:hidden after:transition-all before:transition-all [&_span]:transition-all
+}
+
+body.nav-active .opener {
+  @apply [&_span]:-rotate-45 [&_span]:-translate-y-1/2 [&_span]:top-1/2 before:rotate-45 before:-translate-y-1/2 before:top-1/2;
+}
+
+.stretched-link {
+  @apply before:absolute before:inset-0 before:cursor-pointer
+}
+
+.card-wrapper .card img {
+  @apply w-full max-h-48 object-cover;
+}

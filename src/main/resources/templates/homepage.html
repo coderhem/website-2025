@@ -1,0 +1,879 @@
+<!doctype html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="../assets/lib/jquery.min.js"></script>
+<link href="/src/output.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="/assets/lib/icomoon/style.css">
+<link rel="stylesheet" href="../css/swiper-bundle.min.css">
+
+<title>Transportation Booking System</title>
+
+</head>
+
+<body>
+	<header class="site-header bg-white">
+		<div class="bg-black py-2">
+			<div
+				class="top-header flex flex-wrap justify-between items-center container">
+				<div class="text-sm font-normal text-white text-center">
+					<span>Find and book reliable transportation options quickly
+						and easily.</span>
+				</div>
+				<div
+					class="flex items-center [&_input]:transition [&_input]:duration-100">
+					<div class="flex items-center gap-4">
+						<div>
+							<a href="/login" class="btn btn-primary"><button>Logout</button></a>
+						</div>
+						<div class="flex items-center">
+
+							<form action="/search" method="post" class="flex">
+								<input class="input text-xs px-3 py-2 w-40 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-primary border-[2px] border-solid border-primary" name="search" placeholder="Search Here">
+								<button class="transition duration-300 px-4 py-2 bg-primary text-white text-xs font-semibold rounded-r-md border-2 border-primary hover:bg-transparent focus:bg-transparent border-l-0">Search</button>
+							</form>
+						</div>
+						<div
+							class="relative before:absolute before:-right-[6px] before:-top-2 before:bg-primary before:text-white before:size-4 before:rounded-full before:content-['1'] before:flex before:justify-center before:text-[10px]">
+							<a th:href="@{/bookingList}" class="stretched-link"><img
+								src="../assets/images/edit-icon.png" width="20" height="20"
+								alt="Edit Icon" loading="lazy"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container mx-auto header-bottom">
+			<div class="flex items-center justify-between">
+				<picture class="relative"> <img
+					src="/assets/images/header-logo.png" alt="Header Logo" width="250"
+					height="95" loading="lazy"> <a href="/home"
+					class="stretched-link js-has-smooth"></a> </picture>
+				<div class="nav-holder">
+					<nav class="nav">
+						<ul class="nav-list">
+							<li><a href="tel:1234567890"
+								class="group flex items-center text-black hover:text-primary duration-300">
+									<div
+										class="size-9 lg:size-11 flex items-center justify-center rounded-full border lg:border-primary/10 border-white relative duration-300">
+										<div
+											class="size-7 lg:size-9 flex items-center justify-center bg-white lg:bg-primary/15 group-hover:bg-primary duration-300 rounded-full">
+											<i class="icon-phone group-hover:text-white duration-300"></i>
+										</div>
+									</div> <span class="pl-2 block lg:hidden xl:block">(123)
+										456-7890</span>
+							</a></li>
+							<li><a href="mailto:adminemail@gmail.com"
+								class="group flex items-center text-black hover:text-primary duration-300">
+									<div
+										class="size-9 lg:size-11 flex items-center justify-center rounded-full border lg:border-primary/10 border-white relative duration-300">
+										<div
+											class="size-7 lg:size-9 flex items-center justify-center bg-white lg:bg-primary/15 group-hover:bg-primary duration-300 rounded-full">
+											<i class="icon-mail group-hover:text-white"></i>
+										</div>
+									</div> <span class="flex-1 pl-2 lg:hidden">adminemail@gmail.com</span>
+							</a></li>
+							<li><a href="#bookingServices"
+								class="btn btn-outline js-has-smooth">Book Now</a></li>
+						</ul>
+					</nav>
+				</div>
+				<a href="#" class="opener"> <span></span>
+				</a>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<section
+			class="relative bg-[url('./../assets/images/bg-img-2.jpg')] bg-no-repeat bg-center bg-cover before:absolute before:inset-0 before:bg-black/85 before:z-[-1] z-[1] py-12 text-white">
+			<div class="container">
+				<div
+					class="flex flex-wrap justify-center items-center -mx-5 gap-y-10">
+					<div class="w-full lg:w-[40%] px-5">
+						<h1>
+							Seamless Travel <span class="text-danger-100"> Starts Here</span>
+						</h1>
+						<ul
+							class="marker:text-danger-100 list-inside [&_li]:list-disc pt-4">
+							<li>Easy Online Reservations</li>
+							<li>Real-Time Tracking</li>
+							<li>Affordable Rates</li>
+							<li>24/7 Customer Support</li>
+						</ul>
+					</div>
+					<div class="w-full lg:w-[60%] px-5">
+						<div class="swiper mySwiper">
+							<div class="swiper-wrapper banner-slider">
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-06.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-02.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-03.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-04.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-05.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+								<figure
+									class="swiper-slide [&_img]:w-full [&_img]:rounded-xl rounded-xl">
+									<img src="../assets/images/slider-img-01.jpg" width="600"
+										height="400" alt="Banner Slider Image" loading="lazy">
+								</figure>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Section {Banner}  -->
+
+		<section
+			class="container relative before:absolute before:inset-0 before:bg-primary/5 before:left-[-90px] before:top-[-120px] before:w-80 before:h-80 py-20 before:z-[-1] before:rounded-full">
+			<div class="text-center pb-7 md:pb-8 lg:pb-12" id="bookingServices">
+				<h2 class="text-4xl font-bold text-ss-dark mb-2">
+					Our <span class="text-primary">Services</span>
+				</h2>
+				<p>Explore the best transportation services designed to suit
+					your needs.</p>
+			</div>
+			<div class="flex flex-wrap -mx-3 card-wrapper">
+				<!-- Product 1 -->
+				<div class="w-full sm:w-1/2 lg:w-1/4 px-3 mb-6 card"
+					th:each="v:${vList}">
+					<div
+						class="flex flex-col h-full border rounded-lg shadow-lg overflow-hidden [&_img]:px-10">
+						<img th:src="@{'../assets/images/'+${v.type}+'.svg'}" width="200"
+							height="200" alt="Icon Car Image">
+
+						<div class="flex flex-col flex-1 p-4">
+							<h3 class="text-lg font-semibold">[[${v.name}]]</h3>
+							<p>[[${v.type}]]</p>
+							<p class="text-xs mt-2">License No: [[${v.licenseNo}]]</p>
+							<p class="text-green-600 text-xs mt-2">[[${v.status}]]</p>
+							<div
+								class="mt-4 flex flex-wrap justify-between gap-y-4 items-center">
+								<span class="text-xl font-bold text-ss-dark-100">Rs. [[${v.price}]]</span>
+								<a th:href="@{/bookingForm(vId=${v.id})}"
+									class="btn btn-primary js-has-smooth">Book Now</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!-- /Section {Our Services}  -->
+
+		<section
+			class="bg-gradient-to-r from-black via-gray-800 to-red-600 py-10 sm:py-14 md:py-20 lg:py-24">
+			<div class="container mx-auto text-center">
+				<div class="text-center text-white mb-8">
+					<h2 class="text-4xl font-bold">How It Works</h2>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+				</div>
+
+				<div
+					class="flex justify-center max-lg:flex-wrap gap-y-8 space-y-8 md:space-y-0 md:space-x-8">
+					<!-- Step 1 -->
+					<div
+						class="flex-1 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-8 rounded-lg border border-white border-opacity-30 hover:shadow-xl transform hover:scale-105 transition duration-300">
+						<div class="mb-4">
+							<svg class="w-16 h-16 mx-auto text-red-500"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2"
+									d="M8 9l3-3m0 0l3 3m-3-3v12M21 15v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2m16 0v2m0 0h.01M3 15v2m0 0h.01M5 10h14a2 2 0 012 2v2m-18-4h18m-18 0V6a2 2 0 012-2h14a2 2 0 012 2v2m0 0h-18z" />
+              </svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-4 text-white">Choose
+							Your Ride</h3>
+						<p class="text-gray-300">Select the type of transportation
+							that best suits your needs. We offer a wide range of options for
+							you to choose from.</p>
+					</div>
+
+					<!-- Step 2 -->
+					<div
+						class="flex-1 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-8 rounded-lg border border-white border-opacity-30 hover:shadow-xl transform hover:scale-105 transition duration-300">
+						<div class="mb-4">
+							<svg class="w-16 h-16 mx-auto text-red-500"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2" d="M16 7l-6 6-6-6m12 10l-6 6-6-6" />
+              </svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-4 text-white">Book Your
+							Ride</h3>
+						<p class="text-gray-300">Easily book your ride through our
+							website or mobile app. Just enter your details, and we'll take
+							care of the rest.</p>
+					</div>
+
+					<!-- Step 3 -->
+					<div
+						class="flex-1 bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg p-8 rounded-lg border border-white border-opacity-30 hover:shadow-xl transform hover:scale-105 transition duration-300">
+						<div class="mb-4">
+							<svg class="w-16 h-16 mx-auto text-red-500"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 8c2.21 0 4-1.79 4-4s-1.79-4-4-4S8 1.79 8 4s1.79 4 4 4zm-2 4H2v10c0 1.11.89 2 2 2h12c1.11 0 2-.89 2-2V12H14v6H8v-6zm8.54-3.54c-.19-.19-.45-.3-.71-.3-.27 0-.52.11-.71.3l-1.54 1.54-1.54-1.54c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.54 1.54-1.54 1.54c-.39.39-.39 1.02 0 1.41.19.19.45.3.71.3.27 0 .52-.11.71-.3l1.54-1.54 1.54 1.54c.19.19.45.3.71.3.27 0 .52-.11.71-.3.39-.39.39-1.02 0-1.41l-1.54-1.54 1.54-1.54c.39-.39.39-1.02 0-1.41z" />
+              </svg>
+						</div>
+						<h3 class="text-2xl font-semibold mb-4 text-white">Enjoy Your
+							Ride</h3>
+						<p class="text-gray-300">Sit back, relax, and enjoy your ride.
+							Our professional drivers will ensure you reach your destination
+							safely and on time.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Section {How It Works}  -->
+
+		<section class="bg-primary/5 py-10 sm:py-14 md:py-20 lg:py-24">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="text-center mb-10">
+					<h2 class="text-4xl font-extrabold">
+						What Our <span class="text-primary">Customers Say</span>
+					</h2>
+					<p>Trusted by travelers worldwide.</p>
+				</div>
+
+				<div class="Swiper swiper-container overflow-hidden">
+					<div class="swiper-wrapper">
+
+						<!-- Testimonial 1 -->
+						<div class="swiper-slide h-auto">
+							<div
+								class="h-full bg-white p-8 rounded-lg shadow-xl hover:shadow-xl transition-shadow duration-300 text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+								<div class="flex items-center justify-between mb-6">
+									<div
+										class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-blue-500">
+										<img src="../assets/images/testimonials-img-01.png"
+											width="100" height="100" alt="Testimonial User Image"
+											loading="lazy">
+										<div class="ml-4">
+											<h3 class="text-2xl font-semibold text-gray-900">John
+												Doe</h3>
+											<p>Tourist</p>
+										</div>
+									</div>
+									<div class="opacity-10 w-20">
+										<img src="../assets/images/quote-icon.svg">
+									</div>
+								</div>
+								<p>"Great service with affordable prices. Booking was easy,
+									and the customer support was very helpful."</p>
+								<!-- Star Rating -->
+								<div class="flex items-center">
+									<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+										viewBox="0 0 20 20">
+                    <path
+											d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                  </svg>
+									<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+										viewBox="0 0 20 20">
+                    <path
+											d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                  </svg>
+									<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+										viewBox="0 0 20 20">
+                    <path
+											d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                  </svg>
+									<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+										viewBox="0 0 20 20">
+                    <path
+											d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                  </svg>
+									<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+										viewBox="0 0 20 20">
+                    <path
+											d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                  </svg>
+								</div>
+							</div>
+						</div>
+
+						<!-- Testimonial 2 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-primary">
+									<img src="../assets/images/testimonials-img-02.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"I was blown away by the quality and attention to detail.
+								The team went above and beyond to meet my expectations.
+								Fantastic experience!"</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+
+						<!-- Testimonial 3 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-black">
+									<img src="../assets/images/testimonials-img-01.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"I've never worked with a company that cared so much about
+								their customers. They made the entire process seamless and
+								stress-free."</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+
+						<!-- Testimonial 4 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-blue-500">
+									<img src="../assets/images/testimonials-img-01.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"Exceptional service and outstanding results. The team
+								listened to my needs and delivered exactly what I wanted. I
+								couldn't be happier!"</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+
+						<!-- Testimonial 5 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-blue-500">
+									<img src="../assets/images/testimonials-img-01.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"Everything was handled with care and precision. The final
+								product exceeded my expectations. Truly a great experience!"</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+
+						<!-- Testimonial 5 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-blue-500">
+									<img src="../assets/images/testimonials-img-01.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"I can't say enough good things about this company. The
+								results were outstanding, and the customer service was even
+								better.</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+
+						<!-- Testimonial 6 -->
+						<div
+							class="swiper-slide bg-white p-8 rounded-lg shadow-xl text-start [&_p]:text-ss-dark/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_p]:text-start">
+							<div class="flex items-center justify-between mb-6">
+								<div
+									class="flex items-center [&_img]:rounded-full [&_img]:object-cover [&_img]:border-2 [&_img]:border-blue-500">
+									<img src="../assets/images/testimonials-img-01.png" width="100"
+										height="100" alt="Testimonial User Image" loading="lazy">
+									<div class="ml-4">
+										<h3 class="text-2xl font-semibold text-gray-900">John Doe</h3>
+										<p>Tourist</p>
+									</div>
+								</div>
+								<div class="opacity-10 w-20">
+									<img src="../assets/images/quote-icon.svg" alt="">
+									</svg>
+								</div>
+							</div>
+							<p>"From start to finish, the service was top-notch. The team
+								was responsive, knowledgeable, and delivered exactly what I
+								needed. Will definitely return!"</p>
+							<!-- Star Rating -->
+							<div class="flex items-center">
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+								<svg class="w-5 h-5 text-gray-300" fill="currentColor"
+									viewBox="0 0 20 20">
+                  <path
+										d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.518 4.674a1 1 0 00.95.69h4.925c.969 0 1.371 1.24.588 1.81l-3.987 2.897a1 1 0 00-.364 1.118l1.518 4.674c.3.921-.755 1.688-1.54 1.118l-3.987-2.897a1 1 0 00-1.175 0l-3.987 2.897c-.785.57-1.84-.197-1.54-1.118l1.518-4.674a1 1 0 00-.364-1.118L2.07 9.101c-.784-.57-.38-1.81.588-1.81h4.925a1 1 0 00.95-.69l1.518-4.674z" />
+                </svg>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-pagination2 mt-8 flex justify-center"></div>
+				</div>
+			</div>
+		</section>
+		<!-- /Section {Testimonials}  -->
+
+		<section
+			class="bg-gradient-to-r from-primary-100 via-gray-800 to-black py-10 sm:py-14 md:py-20 lg:py-24 mt-10 md:mt-14 lg:mt-24">
+			<div class="container mx-auto text-center">
+				<div class="text-center text-white mb-12">
+					<h2 class="text-4xl font-bold mb-4">Pricing Plans</h2>
+					<p class="text-lg">Choose the plan that suits your
+						transportation needs.</p>
+				</div>
+
+				<div
+					class="flex max-lg:flex-wrap justify-around items-center -mx-4 gap-y-8 ">
+					<!-- Basic Plan -->
+					<div class="w-full md:w-1/2 lg:w-1/3 px-4">
+						<div
+							class="bg-white p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300">
+							<h3 class="text-3xl font-bold mb-4 uppercase">Basic</h3>
+							<p class="text-gray-700 mb-4">Ideal for occasional users.</p>
+							<div class="text-5xl font-bold mb-4 text-primary-100">
+								Rs.2999<span class="text-xl">/mo</span>
+							</div>
+							<ul class="text-center mb-6 text-gray-700">
+								<li class="mb-2">5 Bookings per Month</li>
+								<li class="mb-2">Standard Support</li>
+								<li class="mb-2">Basic Features</li>
+							</ul>
+							<a href="#bookingServices" class="btn btn-primary js-has-smooth">Get
+								Started</a>
+						</div>
+					</div>
+
+					<!-- Standard Plan -->
+					<div class="w-full md:w-1/2 lg:w-1/3 px-4">
+						<div
+							class="bg-white p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 lg:h-[500px] flex justify-center items-center flex-col">
+							<h3 class="text-3xl font-bold mb-4 uppercase text-green-600">Premium</h3>
+							<p class="text-gray-700 mb-4">For regular users and small
+								businesses.</p>
+							<div class="text-5xl font-bold mb-4 text-green-600">
+								Rs.6999<span class="text-xl">/mo</span>
+							</div>
+							<ul class="text-center mb-6 text-gray-700">
+								<li class="mb-2">20 Bookings per Month</li>
+								<li class="mb-2">Priority Support</li>
+								<li class="mb-2">Advanced Features</li>
+							</ul>
+							<a href="#bookingServices" class="btn btn-primary js-has-smooth">Get
+								Started</a>
+						</div>
+					</div>
+
+					<!-- Premium Plan -->
+					<div class="w-full md:w-1/2 lg:w-1/3 px-4">
+						<div
+							class=" bg-white p-8 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300">
+							<h3 class="text-3xl font-bold mb-4 uppercase">Standard</h3>
+							<p class="text-gray-700 mb-4">For enterprises and high-volume
+								users.</p>
+							<div class="text-5xl font-bold mb-4 text-primary-100">
+								Rs.5099<span class="text-xl">/mo</span>
+							</div>
+							<ul class="text-center mb-6 text-gray-700">
+								<li class="mb-2">Unlimited Bookings</li>
+								<li class="mb-2">24/7 Support</li>
+								<li class="mb-2">All Features Included</li>
+							</ul>
+							<a href="#bookingServices" class="btn btn-primary js-has-smooth">Get
+								Started</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Section {Pricing Plans}  -->
+
+		<section class="bg-gray-100 py-12">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-12">
+					<h2 class="text-4xl font-bold text-gray-800">Frequently Asked
+						Questions</h2>
+					<p class="text-lg text-gray-600">Find the answers to our most
+						commonly asked questions below.</p>
+				</div>
+
+				<div id="faq-container">
+					<!-- FAQ Item -->
+					<div class="faq-item mb-4">
+						<button
+							class="faq-question w-full bg-white text-left px-6 py-4 rounded-t-lg shadow-md text-gray-800 font-semibold flex items-center justify-between focus:outline-none">
+							What is the booking process?
+							<svg class="w-6 h-6 faq-icon transition-transform duration-300"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+						</button>
+						<div
+							class="faq-answer px-6 py-4 bg-white rounded-b-lg shadow-md text-gray-600 hidden">
+							<p>The booking process is simple. Select your ride, choose
+								your dates, and complete the booking through our secure payment
+								system.</p>
+						</div>
+					</div>
+
+					<!-- FAQ Item -->
+					<div class="faq-item mb-4">
+						<button
+							class="faq-question w-full bg-white text-left px-6 py-4 rounded-t-lg shadow-md text-gray-800 font-semibold flex items-center justify-between focus:outline-none">
+							What is the booking process?
+							<svg class="w-6 h-6 faq-icon transition-transform duration-300"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+						</button>
+						<div
+							class="faq-answer px-6 py-4 bg-white rounded-b-lg shadow-md text-gray-600 hidden">
+							<p>The booking process is simple. Select your ride, choose
+								your dates, and complete the booking through our secure payment
+								system.</p>
+						</div>
+					</div>
+
+					<!-- FAQ Item -->
+					<div class="faq-item mb-4">
+						<button
+							class="faq-question w-full bg-white text-left px-6 py-4 rounded-t-lg shadow-md text-gray-800 font-semibold flex items-center justify-between focus:outline-none">
+							What is the booking process?
+							<svg class="w-6 h-6 faq-icon transition-transform duration-300"
+								xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+									stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+						</button>
+						<div
+							class="faq-answer px-6 py-4 bg-white rounded-b-lg shadow-md text-gray-600 hidden">
+							<p>The booking process is simple. Select your ride, choose
+								your dates, and complete the booking through our secure payment
+								system.</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- /Section {FAQ}  -->
+		   
+	</main>
+
+	<!-- Footer -->
+	<footer class="bg-black text-white py-12">
+		<div class="container mx-auto px-4">
+			<div class="flex flex-wrap justify-between">
+				<!-- Footer Navigation -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+					<ul>
+						<li><a href="index.html" class="hover:text-gray-400">Home</a></li>
+						<li><a href="about.html" class="hover:text-gray-400">About
+								Us</a></li>
+						<li><a href="services.html" class="hover:text-gray-400">Services</a></li>
+						<li><a href="contact.html" class="hover:text-gray-400">Contact</a></li>
+					</ul>
+				</div>
+
+				<!-- Contact Information -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+					<p class="mb-2">Bhansi-18, Kanchanpur, Nepal</p>
+					<p class="mb-2">
+						Email: <a href="mailto:adminemail@gmail.com"
+							class="hover:text-gray-400">adminemail@gmail.com</a>
+					</p>
+					<p class="mb-2">
+						Phone: <a href="tel:+1234567890" class="hover:text-gray-400">(123)
+							456-7890</a>
+					</p>
+				</div>
+
+				<!-- Social Media -->
+				<div class="w-full md:w-1/4 mb-8 md:mb-0">
+					<h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+					<div class="flex space-x-4">
+						<a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M23 3a10.96 10.96 0 01-3.14.86A5.472 5.472 0 0022.4 1.6a10.9 10.9 0 01-3.42 1.3A5.425 5.425 0 0016.9 0a5.48 5.48 0 00-5.5 5.5c0 .43.05.85.14 1.26A15.488 15.488 0 011.67 1.1a5.54 5.54 0 00-.74 2.77 5.42 5.42 0 002.43 4.56A5.416 5.416 0 01.5 8v.06a5.52 5.52 0 004.42 5.38A5.48 5.48 0 014 13a5.43 5.43 0 01-2.5-.7v.07a5.53 5.53 0 005.16 5.45A10.86 10.86 0 010 19.3a15.5 15.5 0 008.41 2.45c10.09 0 15.6-8.34 15.6-15.6 0-.24-.01-.48-.02-.72A11.04 11.04 0 0023 3z" />
+              </svg>
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M12 2.04c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm1.26 14.24l-4.77-3.08 1.33-2.13 3.44 2.21 6.11-9.9 1.43.8-5.73 9.33zm4.73-10.94l-2.95 4.71-2.7-1.71 2.67-4.28 2.98 1.73zm-2.38 2.72l-2.74 4.36-2.47-1.53 2.71-4.39 2.5 1.56zm2.35-3.54l-.96.57-2.9-1.7.93-1.55 2.93 1.73z" />
+              </svg>
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M12 2.163c1.204 0 1.333.005 1.8.026a3.638 3.638 0 012.688 1.156 3.637 3.637 0 011.157 2.687c.021.469.026.598.026 1.8s-.005 1.331-.026 1.8a3.638 3.638 0 01-1.157 2.688 3.637 3.637 0 01-2.688 1.157c-.469.021-.598.026-1.8.026-1.204 0-1.333-.005-1.8-.026a3.637 3.637 0 01-2.688-1.157 3.638 3.638 0 01-1.156-2.688c-.021-.469-.026-.598-.026-1.8s.005-1.331.026-1.8a3.637 3.637 0 011.156-2.687 3.638 3.638 0 012.688-1.156c.467-.021.596-.026 1.8-.026zM12 0c-1.445 0-1.626.006-2.194.031a5.49 5.49 0 00-3.952 1.527 5.49 5.49 0 00-1.527 3.951C4.006 6.374 4 6.555 4 8s.006 1.626.031 2.194a5.49 5.49 0 001.527 3.952 5.49 5.49 0 003.951 1.527c.568.025.749.031 2.194.031s1.626-.006 2.194-.031a5.49 5.49 0 003.951-1.527 5.49 5.49 0 001.527-3.952C20.994 9.626 21 9.445 21 8s-.006-1.626-.031-2.194a5.49 5.49 0 00-1.527-3.951 5.49 5.49 0 00-3.951-1.527C13.626.006 13.445 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.033a3.87 3.87 0 110-7.741 3.87 3.87 0 010 7.741zm3.835-9.211a1.08 1.08 0 11-2.159 0 1.08 1.08 0 012.159 0z" />
+              </svg>
+
+						</a> <a href="#" class="text-gray-400 hover:text-gray-300"> <svg
+								class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor" viewBox="0 0 24 24">
+                <path
+									d="M23.498 6.186a2.805 2.805 0 00-1.977-1.978C19.299 4 12 4 12 4S4.701 4 2.479 4.208A2.805 2.805 0 00.502 6.186C0 8.01 0 12 0 12s0 3.99.502 5.814a2.805 2.805 0 001.977 1.978C4.701 20 12 20 12 20s7.299 0 9.521-.208a2.805 2.805 0 001.977-1.978C24 15.99 24 12 24 12s0-3.99-.502-5.814zM9.845 15.698V8.303l6.573 3.697-6.573 3.698z" />
+              </svg>
+						</a>
+					</div>
+				</div>
+
+				<!-- Newsletter Signup -->
+				<div class="w-full md:w-1/4">
+					<h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+					<p class="mb-4">Subscribe to our newsletter to receive the
+						latest updates and offers.</p>
+					<form action="#" method="POST">
+						<input type="email" placeholder="Your email"
+							class="w-full px-4 py-2 mb-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-gray-600">
+						<button type="submit"
+							class="w-full bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-500 transition duration-300">Subscribe</button>
+					</form>
+				</div>
+			</div>
+
+			<div class="text-center mt-12">
+				<p class="text-gray-600">&copy; 2024 Your Company. All rights
+					reserved.</p>
+			</div>
+		</div>
+
+		<script src="../assets/js/form.js"></script>
+		<script src="../assets/js/navbar.js"></script>
+		<script src="../assets/js/swiper-bundle.min.js"></script>
+		<script src="../assets/js/main.js"></script>
+	</footer>
+
+</body>
+
+</html>
