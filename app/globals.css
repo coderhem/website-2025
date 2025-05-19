@@ -1,26 +1,127 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  @apply h-full w-full;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply min-w-[320px] font-base font-normal antialiased text-base text-white;
+}
+
+p {
+  @apply mb-4;
+}
+
+a {
+  @apply text-primary no-underline transition-all hover:text-primary/50 focus:text-primary/50;
+}
+
+picture {
+  @apply block;
+}
+
+.site-content {
+  @apply grow;
+}
+
+.site-header,
+.site-content,
+.site-footer {
+  @apply shrink-0;
+}
+
+.site-wrapper {
+  @apply min-w-[20rem] mx-auto my-0 flex min-h-full relative overflow-hidden items-stretch flex-col;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold leading-tight mb-2 font-lead;
+}
+
+h1,
+.h1 {
+  @apply text-3xl lg:text-4xl xl:text-6xl;
+}
+h2,
+.h2 {
+  @apply text-3xl lg:text-4xl;
+}
+h3,
+.h3 {
+  @apply text-2xl lg:text-3xl;
+}
+h4,
+.h4 {
+  @apply text-xl lg:text-2xl;
+}
+h5,
+.h5 {
+  @apply text-lg lg:text-xl;
+}
+h6,
+.h6 {
+  @apply text-base;
+}
+
+.btn {
+  @apply inline-flex 
+		items-center 
+		justify-center 
+		cursor-pointer 
+		px-6 
+		py-4 
+		text-base 
+		lg:text-lg 
+		text-center 
+		!leading-none 
+		font-normal 
+		no-underline 
+		select-none 
+		border 
+		border-solid 
+		transition 
+		ease-in-out 
+		duration-500 
+		focus:outline-none 
+		focus:ring 
+		focus:ring-offset-1 
+		focus:ring-opacity-50 
+		disabled:opacity-75 
+		disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-primary 
+    text-white 
+    border-primary 
+    hover:bg-primary/75 
+    hover:text-white 
+    hover:border-primary/75
+    focus:bg-primary/75
+    focus:text-white 
+    focus:border-primary/75
+    focus:ring-primary/75
+    active:bg-primary/50 
+    active:border-primary/50;
+}
+
+.btn-outline {
+  @apply 
+  bg-transparent
+  border-primary
+  text-white
+  hover:bg-primary
+  hover:text-white
+  ;
+}
+.btn-block {
+  @apply block w-full;
 }
