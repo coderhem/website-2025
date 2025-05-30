@@ -8,6 +8,7 @@ module.exports = {
 
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+
   ],
   theme: {
     container: {
@@ -34,6 +35,7 @@ module.exports = {
       fontFamily: {
         'base': ["Lato", ...defaultTheme.fontFamily.sans],
         'lead': ["Outfit", ...defaultTheme.fontFamily.sans],
+        'oswald': ["Oswald", ...defaultTheme.fontFamily.sans],
         'icomoon': ['icomoon'],
       },
     },

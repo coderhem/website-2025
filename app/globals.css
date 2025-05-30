@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  @apply min-w-[320px] font-base font-normal antialiased text-base text-white;
+  @apply min-w-[320px] font-base font-normal antialiased text-base text-white bg-gray-600/20;
 }
 
 p {
@@ -48,7 +48,7 @@ h6 {
 
 h1,
 .h1 {
-  @apply text-3xl lg:text-4xl xl:text-6xl;
+  @apply text-3xl md:text-4xl lg:text-5xl xl:text-6xl;
 }
 h2,
 .h2 {
@@ -102,6 +102,20 @@ h6,
   @apply bg-primary 
     text-white 
     border-primary 
+    hover:bg-transparent 
+    hover:text-primary 
+    hover:border-primary/75
+    focus:bg-primary/75
+    focus:text-white 
+    focus:border-primary/75
+    focus:ring-primary/75
+    active:bg-primary/50 
+    active:border-primary/50;
+}
+.btn-secondary {
+  @apply bg-primary 
+    text-white 
+    border-primary 
     hover:bg-primary/75 
     hover:text-white 
     hover:border-primary/75
@@ -113,15 +127,267 @@ h6,
     active:border-primary/50;
 }
 
+.btn-primary-100 {
+  @apply bg-primary 
+    text-white 
+    border-primary 
+    hover:bg-transparent 
+    hover:text-white 
+    hover:border-white
+    focus:bg-primary/75
+    focus:text-white 
+    focus:border-white
+    focus:ring-primary/75
+    active:bg-primary/50 
+    active:border-white;
+}
+
 .btn-outline {
-  @apply 
-  bg-transparent
-  border-primary
+  @apply bg-transparent
+  border-white
   text-white
   hover:bg-primary
+  focus:bg-primary
   hover:text-white
-  ;
+  focus:text-white
+  hover:border-primary
+  focus:ring-primary;
 }
 .btn-block {
   @apply block w-full;
+}
+
+/* Custom CSS */
+.stretched-link {
+  @apply before:absolute
+  before:inset-0;
+}
+.nav-item a {
+  @apply text-white
+  text-base
+  font-lead
+  hover:text-primary
+  transition-all
+  duration-300
+  relative
+  before:absolute
+  before:-bottom-1
+  before:bg-primary
+  before:w-0
+  hover:before:w-full
+  before:h-[3px]
+  before:transition-all
+  before:duration-300;
+}
+
+/* Icomoon */
+@font-face {
+  font-family: "icomoon";
+  src: url("../assets/icomoon/fonts/icomoon.eot?u8426j");
+  src: url("../assets/icomoon/fonts/icomoon.eot?u8426j#iefix")
+      format("embedded-opentype"),
+    url("../assets/icomoon/fonts/icomoon.ttf?u8426j") format("truetype"),
+    url("../assets/icomoon/fonts/icomoon.woff?u8426j") format("woff"),
+    url("../assets/icomoon/fonts/icomoon.svg?u8426j#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mail:before {
+  content: "\e909";
+}
+.icon-service:before {
+  content: "\e901";
+}
+.icon-foot:before {
+  content: "\e902";
+}
+.icon-dumble:before {
+  content: "\e903";
+}
+.icon-machine:before {
+  content: "\e904";
+}
+.icon-hand-tool:before {
+  content: "\e905";
+}
+.icon-men:before {
+  content: "\e907";
+}
+.icon-rec-check:before {
+  content: "\e908";
+}
+.icon-stand:before {
+  content: "\e90a";
+}
+.icon-home:before {
+  content: "\e900";
+}
+.icon-pencil2:before {
+  content: "\e906";
+}
+.icon-bullhorn:before {
+  content: "\e91a";
+}
+.icon-connection:before {
+  content: "\e91b";
+}
+.icon-cart:before {
+  content: "\e93a";
+}
+.icon-credit-card:before {
+  content: "\e93f";
+}
+.icon-phone:before {
+  content: "\e942";
+}
+.icon-location2:before {
+  content: "\e948";
+}
+.icon-map:before {
+  content: "\e94b";
+}
+.icon-download:before {
+  content: "\e960";
+}
+.icon-upload:before {
+  content: "\e961";
+}
+.icon-floppy-disk:before {
+  content: "\e962";
+}
+.icon-database:before {
+  content: "\e964";
+}
+.icon-bubbles2:before {
+  content: "\e96d";
+}
+.icon-user:before {
+  content: "\e971";
+}
+.icon-users:before {
+  content: "\e972";
+}
+.icon-user-plus:before {
+  content: "\e973";
+}
+.icon-user-check:before {
+  content: "\e975";
+}
+.icon-quotes-left:before {
+  content: "\e977";
+}
+.icon-quotes-right:before {
+  content: "\e978";
+}
+.icon-aid-kit:before {
+  content: "\e998";
+}
+.icon-fire:before {
+  content: "\e9a9";
+}
+.icon-attachment:before {
+  content: "\e9cd";
+}
+.icon-eye:before {
+  content: "\e9ce";
+}
+.icon-star-full:before {
+  content: "\e9d9";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+.icon-play3:before {
+  content: "\ea1c";
+}
+.icon-mail-2:before {
+  content: "\ea83";
+}
+.icon-hangouts:before {
+  content: "\ea8e";
+}
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+.icon-twitter:before {
+  content: "\ea96";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
+.icon-skype:before {
+  content: "\eac5";
+}
+.icon-linkedin:before {
+  content: "\eac9";
+}
+.icon-codepen:before {
+  content: "\eae8";
+}
+.icon-svg:before {
+  content: "\eae9";
+}
+
+/* Custom Css */
+.stretched-link{
+  @apply
+  before:absolute
+  before:inset-0
+}
+
+.stroke h2{
+      -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: transparent;
+    @apply
+    text-6xl
+    font-oswald
+    font-black
+    mb-6
+    text-clip 
+    bg-transparent
+  stroke-white;
+}
+
+.swiper-pagination{
+  @apply
+  !static
+  mt-5
+}
+
+.swiper-pagination-bullet{
+  @apply
+  !bg-white/80
+  transition-all
+  duration-700
+}
+
+.swiper-pagination-bullet-active{
+  @apply
+  !bg-primary
+  !w-10
+  !rounded-2xl
 }
