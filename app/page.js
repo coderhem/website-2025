@@ -412,10 +412,10 @@ const page = () => {
 
       <section className='bg-black py-14 md:py-20 lg:py-24 relative z-[2]'>
         <div className="container">
-          <Row className='lg:[&>*:nth-child(2)]:scale-110' gutterWidth={50} style={{ rowGap: '30px' }}>
+          <Row className='xl:[&>*:nth-child(2)]:scale-110' gutterWidth={50} style={{ rowGap: '30px' }}>
             {pricingPlans.map((data, index) => {
               return (
-                <Col md={6} lg={4} key={index}>
+                <Col md={6} xl={4} key={index}>
                   <Pricing
                     plan={data.plan}
                     dollorIcon={data.dollorIcon}
