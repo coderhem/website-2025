@@ -23,7 +23,7 @@ const Pricing = (
       <h3 className='h1'><span className='text-base'>{dollorIcon}</span>{price}<span className='text-base'>{time}</span></h3>
      </div>}
     {featureItems &&
-     <ul className="bg-black px-6 pt-14 text-start [&_li]:mb-3 [&_li]:font-medium [&_li]:relative [&_li]:pl-6 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-0 [&_li]:before:content-['\ea10'] [&_li]:before:font-icomoon [&_li.cross]:before:text-primary [&_li]:before:text-green-500 [&_li.cross]:text-sm [&_li.cross]:before:content-['\ea0f']">
+     <ul className="bg-black px-6 pt-14 text-start [&_li]:mb-3 [&_li]:font-medium [&_li]:relative [&_li]:pl-6 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:top-0 [&_li]:before:content-['\ea10'] [&_li]:before:font-icomoon [&_li.cross]:before:text-primary [&_li]:before:text-green-500 [&_li.cross]:before:text-sm [&_li.cross]:before:content-['\ea0f']">
       {featureItems?.map((item, index) => (
        <li key={index} className={!item.available ? 'cross' : ''}>
         {item.label}
