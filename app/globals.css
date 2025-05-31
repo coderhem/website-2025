@@ -194,10 +194,9 @@ h6,
   font-display: block;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -264,6 +263,9 @@ h6,
 .icon-map:before {
   content: "\e94b";
 }
+.icon-clock2:before {
+  content: "\e94f";
+}
 .icon-download:before {
   content: "\e960";
 }
@@ -312,11 +314,17 @@ h6,
 .icon-star-full:before {
   content: "\e9d9";
 }
+.icon-cross:before {
+  content: "\ea0f";
+}
 .icon-checkmark:before {
   content: "\ea10";
 }
 .icon-play3:before {
   content: "\ea1c";
+}
+.icon-radio-checked:before {
+  content: "\ea54";
 }
 .icon-mail-2:before {
   content: "\ea83";
@@ -351,6 +359,7 @@ h6,
 .icon-svg:before {
   content: "\eae9";
 }
+
 
 /* Custom Css */
 .stretched-link{
@@ -390,4 +399,19 @@ h6,
   !bg-primary
   !w-10
   !rounded-2xl
+}
+
+.clip-path::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: -4px;
+  width: 8rem;         /* same as w-20 */
+  height: 6rem;      /* same as h-14 */
+  background-color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.80);
+  border-radius: 0.5rem; /* same as rounded */
+  transform: rotate(4deg);
+  z-index: 1;
+ clip-path: polygon(66% 0, 100% -2%, 0 70.7%, 0 40%);
 }

@@ -21,6 +21,7 @@ import { Col, Row } from 'react-grid-system';
 import userImg from '../assets/images/why-us-img-9.webp'
 import TestimonialCard from '@/components/testimonialCard';
 import CardTeam from '@/components/cards/cardTeam';
+import Pricing from '@/components/pricing';
 
 const serviceData = [
   {
@@ -240,6 +241,60 @@ const teamData = [
   },
 ]
 
+const pricingPlans = [
+  {
+    plan: 'Basic',
+    dollorIcon: '$',
+    price: '29',
+    time: '/month',
+    featureItems: [
+      { label: 'Access to gym floor (cardio & weight training)', available: true },
+      { label: 'Locker facility', available: true },
+      { label: 'Free fitness consultation (1 session)', available: true },
+      { label: 'Group fitness classes (Yoga, Zumba)', available: false },
+      { label: 'Personal training (1 session/month)', available: false },
+      { label: 'Sauna & steam room access', available: false },
+      { label: 'Nutrition coaching', available: false }
+    ],
+    ctaText: 'Join Basic',
+    ctaLink: '#'
+  },
+  {
+    plan: 'Standard',
+    dollorIcon: '$',
+    price: '49',
+    time: '/month',
+    featureItems: [
+      { label: 'Access to gym floor (cardio & weight training)', available: true },
+      { label: 'Locker facility', available: true },
+      { label: 'Free fitness consultation (2 sessions)', available: true },
+      { label: 'Group fitness classes (Yoga, Zumba)', available: true },
+      { label: 'Personal training (1 session/month)', available: true },
+      { label: 'Sauna & steam room access', available: false },
+      { label: 'Nutrition coaching', available: false }
+    ],
+    ctaText: 'Join Standard',
+    ctaLink: '#'
+  },
+  {
+    plan: 'Premium',
+    dollorIcon: '$',
+    price: '79',
+    time: '/month',
+    featureItems: [
+      { label: 'Access to gym floor (cardio & weight training)', available: true },
+      { label: 'Locker facility', available: true },
+      { label: 'Free fitness consultation (unlimited)', available: true },
+      { label: 'Group fitness classes (Yoga, Zumba, HIIT)', available: true },
+      { label: 'Personal training (3 sessions/month)', available: true },
+      { label: 'Sauna & steam room access', available: true },
+      { label: 'Nutrition coaching', available: true }
+    ],
+    ctaText: 'Join Premium',
+    ctaLink: '#'
+  }
+];
+
 const page = () => {
   return (
     <div>
@@ -322,6 +377,7 @@ const page = () => {
           </div>
         </div>
       </section>
+      {/* Why Us */}
 
       <section className='py-10 md:py-14 lg:py-20 bg-black'>
         <div className="container">
@@ -332,7 +388,7 @@ const page = () => {
           <Row style={{ rowGap: '30px' }}>
             {teamData.map((data, index) => {
               return (
-                <Col sm={2} md={3} lg={4} key={index}>
+                <Col md={6} lg={4} key={index}>
                   <CardTeam
                     trainerImg={data.trainerImg}
                     trainerName={data.trainerName}
@@ -352,7 +408,30 @@ const page = () => {
           </Row>
         </div>
       </section>
-      {/* Card Team */}
+      {/* /Card Team */}
+
+      <section className='bg-black py-14 md:py-20 lg:py-24 relative z-[2]'>
+        <div className="container">
+          <Row className='lg:[&>*:nth-child(2)]:scale-110' gutterWidth={50} style={{ rowGap: '30px' }}>
+            {pricingPlans.map((data, index) => {
+              return (
+                <Col md={6} lg={4} key={index}>
+                  <Pricing
+                    plan={data.plan}
+                    dollorIcon={data.dollorIcon}
+                    price={data.price}
+                    time={data.time}
+                    featureItems={data.featureItems}
+                    ctaLink={data.ctaLink}
+                    ctaText={data.ctaText}
+                    crossIcon={data.crossIcon}
+                  />
+                </Col>
+              )
+            })}
+          </Row>
+        </div>
+      </section>
 
       <section className='py-14 md:py-20 lg:py-24 bg-black/80'>
         <div className="container">
@@ -361,11 +440,16 @@ const page = () => {
             description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores non ea consectetur perferendis quia impedit porro dolorem aspernatur laborum, adipisci est consequuntur assumenda nobis odio reiciendis accusantium quibusdam quo numquam?"
           />
           <Swiper
-            modules={[Pagination,]}
+            modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1}
+            loop={true}
             pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 4 },
@@ -382,7 +466,7 @@ const page = () => {
 
         </div>
       </section>
-      {/* Section Testiminials */}
+      {/* /Section Testiminials */}
 
     </div >
   )
