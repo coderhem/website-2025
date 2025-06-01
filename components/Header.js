@@ -1,7 +1,19 @@
 import Head from 'next/head';
 import React from 'react'
+const navData = [
+  { navText: 'Home', navLink: '/home' },
+  { navText: 'About Us', navLink: '/about' },
+  { navText: 'Services', navLink: '/services' },
+  { navText: 'Pricing', navLink: '/pricing' },
+  { navText: 'Contact Us', navLink: '/contact' }
+]
 
-const Header = () => {
+const Header = (
+  {
+    navText,
+    navLink
+  }
+) => {
   return (
     <section className='fixed top-0 left-0 right-0 z-10 max-md:text-center'>
       <div className="bg-black py-4 md:py-3">
@@ -60,14 +72,21 @@ const Header = () => {
                 <h4>Logo Here</h4>
               </a>
             </div>
-            <nav>
-              <ul className='flex gap-8'>
-                <li className='nav-item'><a href="#">Home</a></li>
-                <li className='nav-item'><a href="#">About</a></li>
-                <li className='nav-item'><a href="#">Service</a></li>
-                <li className='nav-item'><a href="#">Contact</a></li>
-                <li className='nav-item'><a href="#">Pricing</a></li>
+            <nav className='nav'>
+              <ul className='flex gap-8 items-wrapper'>
+                {navData.map((data, index) => {
+                  return (
+                    <li key={index} className='nav-item'>
+                      <a href={data.navLink}>{data.navText}</a>
+                    </li>
+                  )
+                })}
               </ul>
+              <div className="hamBurger">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </nav>
           </div>
         </div>

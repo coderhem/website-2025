@@ -411,7 +411,7 @@ const page = () => {
       {/* /Card Team */}
 
       <section className='bg-black py-14 md:py-20 lg:py-24 relative z-[2]'>
-        <div className="container">
+        <div className="container px-10">
           <Row className='xl:[&>*:nth-child(2)]:scale-110' gutterWidth={50} style={{ rowGap: '30px' }}>
             {pricingPlans.map((data, index) => {
               return (
@@ -432,6 +432,7 @@ const page = () => {
           </Row>
         </div>
       </section>
+      {/* section Pricing */}
 
       <section className='py-14 md:py-20 lg:py-24 bg-black/80'>
         <div className="container">
@@ -467,7 +468,6 @@ const page = () => {
         </div>
       </section>
       {/* /Section Testiminials */}
-
     </div >
   )
 }

@@ -401,6 +401,28 @@ h6,
   !rounded-2xl
 }
 
+.nav .items-wrapper{
+  @apply
+  hidden
+  lg:flex
+}
+.nav .hamBurger{
+  @apply
+  flex
+  flex-col
+  gap-[6px]
+  block
+  lg:hidden
+  cursor-pointer
+
+}
+.nav .hamBurger span{
+@apply
+w-8
+h-1
+bg-white
+rounded-full
+}
 .clip-path::before {
   content: '';
   position: absolute;

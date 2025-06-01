@@ -19,7 +19,7 @@ const TestimonialCard = (
  return (
   <>
 
-   <div className="h-full group bg-white py-3 px-4 hover:shadow-[0_0_20px_rgba(255,0,0,0.5)] transition-all duration-300 [&_h2]:text-white text-dark rounded-2xl relative before:absolute before:-right-8 before:-bottom-20 before:bg-[url('../assets/images/clound-img.png')] before:opacity-[0.2] before:bg-contain before:bg-no-repeat overflow-hidden before:w-40 before:h-40">
+   <div className="h-full group bg-white py-3 px-4 hover:shadow-[0_0_20px_rgba(255,0,0,0.5)] transition-all duration-300 [&_h2]:text-white text-dark rounded-2xl relative before:absolute before:-right-20 before:-bottom-24 before:content-['\e978'] before:text-5xl before:font-icomoon before:opacity-[0.2] before:bg-contain before:bg-no-repeat overflow-hidden before:w-40 before:h-40">
     <div className="bg-black py-2 px-3 rounded-full [&_img]:w-24 [&_img]:h-24 [&_img]:rounded-full [&_img]:object-cover [&_img]:object-center [&_img]:border-primary [&_img]:border-2 flex justify-between items-center mb-4 group-hover:shadow-[0_0_20px_rgba(255,0,0,0.9)] transition-all duration-300">
      {clientImage &&
       <img
