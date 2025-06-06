@@ -414,7 +414,7 @@ h6,
   block
   lg:hidden
   cursor-pointer
-
+  items-end;
 }
 .nav .hamBurger span{
 @apply
@@ -422,7 +422,38 @@ w-8
 h-1
 bg-white
 rounded-full
+transition-all
+duration-300
 }
+
+.hamBurger span:nth-child(2){
+@apply
+w-[70%];
+}
+
+.hamBurger:hover span:nth-child(2){
+@apply
+w-[100%];
+}
+ 
+
+.hamBurger.active span:nth-child(1){
+@apply
+rotate-45
+translate-y-[5px]
+}
+
+.hamBurger.active span:nth-child(2){
+@apply
+hidden;
+}
+.hamBurger.active span:nth-child(3){
+@apply
+-rotate-45
+translate-y-[-5px]
+/* translate-x-[-5px] */
+}
+
 .clip-path::before {
   content: '';
   position: absolute;
@@ -436,4 +467,12 @@ rounded-full
   transform: rotate(4deg);
   z-index: 1;
  clip-path: polygon(66% 0, 100% -2%, 0 70.7%, 0 40%);
+}
+
+.hide{
+  @apply
+  opacity-0
+  hidden
+  transition-transform
+  duration-300
 }
