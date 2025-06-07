@@ -10,9 +10,11 @@ const oswald = Lato({ subsets: ['latin'], variable: '--font-oswald', weight: ['4
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${exo2.variable} ${lato.variable} ${oswald.variable}`}>
-         <body cz-shortcut-listen="true">
+      <body cz-shortcut-listen="true" className="min-h-screen flex flex-col">
         <Header />
-        {children}
+        <main className="flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

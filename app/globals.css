@@ -174,11 +174,12 @@ h6,
   before:-bottom-1
   before:bg-primary
   before:w-0
-  hover:before:w-full
+  hover:before:w-[80%]
   before:h-[3px]
   before:transition-all
   before:duration-300;
 }
+
 
 /* Icomoon */
 @font-face {
@@ -322,6 +323,15 @@ h6,
 }
 .icon-play3:before {
   content: "\ea1c";
+}
+.icon-arrow-right2:before {
+  content: "\ea3c";
+}
+.icon-arrow-left2:before {
+  content: "\ea40";
+}
+.icon-circle-up:before {
+  content: "\ea41";
 }
 .icon-radio-checked:before {
   content: "\ea54";

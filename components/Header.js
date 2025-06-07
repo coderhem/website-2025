@@ -26,7 +26,7 @@ const Header = (
 
   return (
     <header className='fixed top-0 left-0 right-0 z-10 max-md:text-center'>
-      <div className={`bg-black py-4 md:py-3 transition-transform duration-500 ease-in-out ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
+      <div className={`bg-black py-4 max-md:pb-11 md:py-3 transition-transform duration-500 ease-in-out ${isHidden ? '-translate-y-full' : 'translate-y-0'}`}>
         <div className="container">
           <div className="flex flex-wrap items-center justify-between text-white [&_p]:mb-0">
             <div className="w-full lg:w-1/2 font-semibold max-md:text-sm max-lg:text-center max-lg:mb-4">

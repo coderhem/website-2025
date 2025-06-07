@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import React from 'react'
 
 const Footer = () => {
   return (
     <>
-      <footer className="bg-black py-10 md:py-14 lg:py-20 max-sm:pb-40">
+      <footer className="shadow-yellow-100/40 shadow-[10px_3px_40px_rgba(255,255,255,0.7)] bg-black py-10 md:py-14 lg:py-20 max-sm:pb-40">
         <div className="container">
           <div className="flex justify-between flex-wrap">
             <div className="max-w-md">
@@ -13,11 +14,11 @@ const Footer = () => {
             <div className="[&_h2]:uppercase">
               <h2 className='h4'>Links</h2>
               <ul className='[&_li]:mb-2'>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="about">About Us</Link></li>
+                <li><Link href="services">Services</Link></li>
+                <li><Link href="pricing">Pricing</Link></li>
+                <li><Link href="contact">Contact Us</Link></li>
               </ul>
             </div>
             <div className="[&_h2]:uppercase">
