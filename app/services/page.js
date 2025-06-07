@@ -14,7 +14,7 @@ const ServicePage = () => {
     <div className="container mx-auto px-4">
      <h2 className="text-4xl font-bold text-primary text-center mb-6">Our Services</h2>
      <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">
-      Whether you're looking to get stronger, leaner, or just feel better, our wide range of expert services are designed to help you achieve your personal fitness goals.
+      Whether youre looking to get stronger, leaner, or just feel better, our wide range of expert services are designed to help you achieve your personal fitness goals.
      </p>
 
      <div className="flex flex-wrap justify-center gap-10">
